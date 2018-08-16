@@ -33,7 +33,7 @@ public class PresenterLoader<P extends BasePresenter> extends Loader<P> {
     @Override
     protected void onStartLoading() {
         super.onStartLoading();
-        if (mCreatePresenter == null) {
+        if (mPresenter == null) {
             forceLoad();
         } else {
             deliverResult(mPresenter);
