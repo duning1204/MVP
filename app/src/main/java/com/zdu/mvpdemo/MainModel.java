@@ -21,7 +21,7 @@ public class MainModel extends BaseModel<MainBean> {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
+                callBack.onSuccess(new MainBean());
             }
         }, 4000);
     }

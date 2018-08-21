@@ -1,5 +1,7 @@
 package com.zdu.mvpdemo.base.mvp.model;
 
+import com.zdu.mvpdemo.MainModel;
+
 /**
  * @author : 杜宗宁
  * @date : 2018/7/28
@@ -7,5 +9,7 @@ package com.zdu.mvpdemo.base.mvp.model;
  * 需填入类名的全引用
  */
 public interface Token {
-    String MAIN_MODE = "com.zdu.mvpdemo.MainModel";
+    //    String MAIN_MODE = "com.zdu.mvpdemo.MainModel";
+    String MAIN_MODE = MainModel.class.getName();
+
 }

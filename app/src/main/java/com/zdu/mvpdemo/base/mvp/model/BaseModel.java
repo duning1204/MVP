@@ -1,5 +1,7 @@
 package com.zdu.mvpdemo.base.mvp.model;
 
+import android.support.annotation.Nullable;
+
 /**
  * @author : 杜宗宁
  * @date : 2018/7/28
@@ -35,7 +37,7 @@ public class BaseModel<T> implements IBaseModel<T> {
      * @param callBack<T> 回调
      */
     @Override
-    public void execute(CallBack<T> callBack) {
+    public void execute(@Nullable CallBack<T> callBack) {
         recycleParam();
     }
 
@@ -44,7 +46,7 @@ public class BaseModel<T> implements IBaseModel<T> {
      */
     @Override
     public void execute() {
-        recycleParam();
+        execute(null);
     }
 
     private void recycleParam() {

@@ -22,7 +22,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
                 .execute(new CallBack<MainBean>() {
                     @Override
                     public void onSuccess(MainBean data) {
-
+                        mView.show();
                     }
 
                     @Override
