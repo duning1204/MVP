@@ -59,7 +59,7 @@ public class BaseMVPActivity<P extends BasePresenter> extends BaseActivity imple
 
     @Override
     public void onLoadFinished(@NonNull Loader<P> loader, P data) {
-        if (data != null) {
+        if (mPresenter == null && data != null) {
             mPresenter = data;
             mPresenter.onAttach(this);
             onPresenterCreate();
