@@ -1,6 +1,7 @@
 package com.zdu.mvpdemo.base.mvp.presenter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.content.Loader;
 
 /**
@@ -30,12 +31,13 @@ public class PresenterLoader<P extends BasePresenter> extends Loader<P> {
         return null;
     }
 
+
     @Override
     protected void onStartLoading() {
         super.onStartLoading();
         if (mPresenter == null) {
             forceLoad();
-        } else {
+        } else if (takeContentChanged()){
             deliverResult(mPresenter);
         }
     }
