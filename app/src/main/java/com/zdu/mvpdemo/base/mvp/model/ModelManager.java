@@ -35,14 +35,9 @@ public class ModelManager {
                 model = (IBaseModel) Class.forName(token).newInstance();
                 mCache.put(token, model);
             }
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return model;
     }
-
 }
