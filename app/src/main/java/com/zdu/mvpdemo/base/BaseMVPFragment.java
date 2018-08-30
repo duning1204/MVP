@@ -51,6 +51,9 @@ public class BaseMVPFragment<P extends BasePresenter> extends BaseFragment imple
 
     @Override
     public void onLoadFinished(@NonNull Loader<P> loader, P data) {
+        if (mPresenter != null) {
+            onViewVisibility();
+        }
         if (mPresenter == null && data != null) {
             mPresenter = data;
             mPresenter.onAttach(this);
@@ -58,11 +61,30 @@ public class BaseMVPFragment<P extends BasePresenter> extends BaseFragment imple
         }
     }
 
+    /**
+     * view 可见状态（首次进入Act的时候不会调用）
+     */
+    private void onViewVisibility() {
+
+    }
+
+    /**
+     * 首次进入页面会调用此方法
+     */
     public void onPresenterCreate() {
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<P> loader) {
+        if (mPresenter != null) {
+            mPresenter.onDetach();
+        }
+        mPresenter = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
         if (mPresenter != null) {
             mPresenter.onDetach();
         }

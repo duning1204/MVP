@@ -59,11 +59,21 @@ public class BaseMVPActivity<P extends BasePresenter> extends BaseActivity imple
 
     @Override
     public void onLoadFinished(@NonNull Loader<P> loader, P data) {
+        if (mPresenter != null) {
+            onViewVisibility();
+        }
         if (mPresenter == null && data != null) {
             mPresenter = data;
             mPresenter.onAttach(this);
             onPresenterCreate();
         }
+    }
+
+    /**
+     * view 可见状态（首次进入Act的时候不会调用）
+     */
+    private void onViewVisibility() {
+
     }
 
     @Override
@@ -76,6 +86,7 @@ public class BaseMVPActivity<P extends BasePresenter> extends BaseActivity imple
 
     /**
      * 回调此方法，presenter创建完毕
+     * 只调用一次
      */
     protected void onPresenterCreate() {
 
